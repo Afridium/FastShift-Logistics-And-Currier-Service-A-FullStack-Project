@@ -657,7 +657,7 @@
     "region": "Mymensingh",
     "district": "Sherpur",
     "city": "Sherpur",
-    "covered_area": ["Nakla", "Nalitabari", "Jhenaigati", "Sreebardi"],
+    "covered_area": ["Sherpur Sadar", "Nakla", "Nalitabari", "Jhenaigati", "Sreebardi"],
     "status": "active",
     "flowchart": "https://example.com/sherpur-flowchart.png",
     "longitude": 90.0333,
