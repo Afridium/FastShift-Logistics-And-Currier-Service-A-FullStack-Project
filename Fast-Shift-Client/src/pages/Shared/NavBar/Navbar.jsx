@@ -116,11 +116,11 @@ const Navbar = () => {
                     {LinksDesktop}
                 </ul>
                 <div className="hidden lg:flex items-center gap-3">
-                    <NavLink to="/signin" className="btn btn-outline btn-sm rounded-full px-5">
+                    <NavLink to="/login" className="btn btn-outline btn-sm rounded-full px-5">
                         Sign In
                     </NavLink>
                     <NavLink
-                        to="/signup"
+                        to="/register"
                         className="btn btn-sm bg-(--color-primary) hover:bg-lime-500 border-none text-black rounded-full px-5"
                     >
                         Sign Up

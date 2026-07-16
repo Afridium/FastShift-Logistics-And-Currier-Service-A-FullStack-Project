@@ -5,10 +5,13 @@ import Navbar from '../pages/Shared/NavBar/Navbar';
 
 const RootLayout = () => {
     return (
-        <div className='pt-3.5'>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
+        <div className='pt-3.5 bg-[#EAECED]'>
+            <div className='max-w-7xl mx-auto'>
+                <Navbar></Navbar>
+                <Outlet></Outlet>
+                <Footer></Footer>
+            </div>
+
         </div>
     );
 };

@@ -13,14 +13,13 @@
 }
 
 
-:root{
+/* :root{
   background-color: #EAECED;
-}
+} */
  body{
   font-family: "Urbanist", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  max-width: 80rem;
   margin: auto;
 }
 
