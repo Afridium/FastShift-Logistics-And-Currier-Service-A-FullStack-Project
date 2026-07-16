@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 import '../../../App.css'
-import Logo from "../ZapShiftLogo/Logo";
+import Logo from "../FastShiftLogo/Logo";
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const Navbar = () => {
             </NavLink>
         </li>
         <li>
-            <NavLink to="/about" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">
+            <NavLink to={"/about"} className="text-sm font-medium text-gray-600 hover:text-black transition-colors">
                 About Us
             </NavLink>
         </li>

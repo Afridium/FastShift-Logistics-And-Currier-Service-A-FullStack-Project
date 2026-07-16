@@ -2,11 +2,11 @@ import { FaLinkedinIn, FaFacebookF, FaYoutube, FaXTwitter } from "react-icons/fa
 // Place your ZapShift logo file at this path (e.g. src/assets/logo.png)
 // and uncomment the import below:
 import zapshiftLogo from "../../../assets/logo.png";
-import Logo from "../ZapShiftLogo/Logo";
+import Logo from "../FastShiftLogo/Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0b0b0b] text-white rounded-2xl px-6 py-10 sm:px-10 md:px-12 md:py-12 mx-auto">
+    <footer className="bg-[#0b0b0b] my-6 text-white rounded-2xl px-6 py-10 sm:px-10 md:px-12 md:py-12 mx-auto">
       {/* Logo + Tagline */}
       <div className="text-center flex flex-col justify-center items-center gap-3.5">
         <Logo></Logo>
