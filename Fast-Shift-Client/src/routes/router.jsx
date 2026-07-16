@@ -7,6 +7,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/AuthPages/Login";
 import Register from "../pages/AuthPages/Register";
 import ForgotPass from "../pages/AuthPages/ForgotPass/ForgotPass";
+import EnterCode from "../pages/AuthPages/ForgotPass/EnterCode";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: 'forgotPass',
         Component: ForgotPass
+      },
+      {
+        path: 'enterCode',
+        Component: EnterCode
       }
     ]
   }

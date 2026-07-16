@@ -12,13 +12,16 @@ const EnterCode = () => {
                 <div className="card bg-base-100 w-full shrink-0">
                     <div className="card-body w-[70%] mx-auto p-0">
                         <form className="fieldset">
-                            {[...Array(6)].map((_, i) => (
+                            <div className='flex gap-2.5 justify-center'>
+                                {[...Array(6)].map((_, i) => (
                                 <input
                                     key={i}
                                     maxLength={1}
-                                    className="input input-bordered w-12 text-center"
+                                    className="input input-bordered w-12 text-center  focus-within:outline-none"
                                 />
                             ))}
+                            </div>
+                            
                             <button className="btn btn-neutral mt-4 bg-(--color-primary) border-0 text-black shadow-none">Verify Code</button>
                         </form>
                     </div>
