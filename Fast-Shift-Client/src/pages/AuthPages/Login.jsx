@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { FaArrowLeft } from "react-icons/fa";
+import { useForm } from 'react-hook-form';
 const Login = () => {
+    const {register, handleSubmit, formState: {errors}} = useForm();
+    const handleLogin = (data) => {
+        console.log(data);
+    }
     return (
         <div className="hero min-h-screen lg:w-[80%] lg:mx-auto">
             <div className="hero-content w-full flex-col justify-center items-center">
@@ -11,13 +16,19 @@ const Login = () => {
                 </div>
                 <div className="card bg-base-100 w-full shrink-0">
                     <div className="card-body w-[70%] mx-auto p-0">
-                        <form className="fieldset">
+                        <form onSubmit={handleSubmit(handleLogin)} className="fieldset">
+
                             <label className="label text-(--color-title) text-bold">Email</label>
-                            <input type="email" className="input w-full" placeholder="Email" />
+                            <input type="email" {...register('email', {required: true})} className="input w-full" placeholder="Email" />
+                            {errors.email?.type==='required' && <p className='text-red-700'>Email is Required</p>}
+                            
                             <label className="label text-(--color-title) strong">Password</label>
-                            <input type="password" className="input w-full" placeholder="Password" />
+                            <input type="password" {...register('password', {required:true, minLength:8})} className="input w-full" placeholder="Password" />
+                            {errors.password?.type==='required' && <p className='text-red-700'>Password is Required</p>}
+                            {errors.password?.type==='minLength' && <p className='text-red-700'>Password must be 8 characters long</p>}
                             <div><Link to={'/forgotPass'} className="link link-hover underline text-(--color-secondary)">Forgot password?</Link></div>
-                            <button className="btn btn-neutral mt-4 bg-(--color-primary) border-0 text-black shadow-none">Login</button>
+                            <input  className="btn btn-neutral mt-4 bg-(--color-primary) border-0 text-black shadow-none" type="submit" value="Login" />
+                        
                         </form>
                         <p className='text-(--color-secondary)'>Dont Have an Account? <Link to={'/register'} className='text-(--color-primary)'>Register</Link></p>
                         <p className='text-center'>Or</p>

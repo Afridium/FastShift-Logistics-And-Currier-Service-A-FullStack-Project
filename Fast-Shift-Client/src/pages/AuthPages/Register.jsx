@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { FaArrowLeft } from "react-icons/fa";
+import { useForm } from 'react-hook-form';
+import { register } from 'swiper/element';
 const Register = () => {
+    const {register, handleSubmit, formState: {errors}} = useForm();
+
+    const handleRegistration = (data) => {
+        console.log("ok");
+        console.log(data);
+    }
     return (
         <div className="hero min-h-screen lg:w-[80%] lg:mx-auto">
             <div className="hero-content w-full flex-col justify-center items-center">
@@ -11,13 +19,18 @@ const Register = () => {
                 </div>
                 <div className="card bg-base-100 w-full shrink-0">
                     <div className="card-body w-[70%] mx-auto p-0">
-                        <form className="fieldset">
+                        <form onSubmit={handleSubmit(handleRegistration)} className="fieldset">
                             <label className="label text-(--color-title) text-bold">Name</label>
-                            <input type="text" className="input w-full" placeholder="Name" />
+                            <input type="text" {...register('name', {required: true})} className="input w-full" placeholder="Name" />
+                            {errors.name?.type==='required' && <p className='text-red-700'>Name is Required</p>}
                             <label className="label text-(--color-title) text-bold">Email</label>
-                            <input type="email" className="input w-full" placeholder="Email" />
+                            <input type="email" {...register('email', {required: true})} className="input w-full" placeholder="Email" />
+                            {errors.email?.type==='required' && <p className='text-red-700'>Email is Required</p>}
                             <label className="label text-(--color-title) strong">Password</label>
-                            <input type="password" className="input w-full" placeholder="Password" />
+                            <input type="password" {...register('password', {required: true, minLength:8, pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).*$/})} className="input w-full" placeholder="Password" />
+                            {errors.password?.type==='required' && <p className='text-red-700'>Name is Required</p>}
+                            {errors.password?.type==='minLength' && <p className='text-red-700'>Password must be 8 characters long</p>}
+                            {errors.password?.type=='pattern' && <p className='text-red-700'>Must include uppercase, lowercase, number, and special character</p>}
                             <button className="btn btn-neutral mt-4 bg-(--color-primary) border-0 text-black font-bold shadow-none">Register</button>
                         </form>
                         <p className='text-(--color-secondary)'>Already Have an Account? <Link to={'/login'} className='text-(--color-primary)'>Login</Link></p>
