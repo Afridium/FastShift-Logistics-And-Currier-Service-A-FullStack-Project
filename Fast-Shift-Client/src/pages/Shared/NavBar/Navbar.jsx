@@ -3,8 +3,15 @@ import { NavLink } from "react-router";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 import '../../../App.css'
 import Logo from "../FastShiftLogo/Logo";
+import useAuth from "../../../CustomHooks/useAuth";
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { user, logOut } = useAuth();
+
+    const handleSingOut = () => {
+        logOut()
+            .catch(err => console.log(err));
+    }
 
     const LinksDesktop = <>
         <li>
@@ -116,15 +123,20 @@ const Navbar = () => {
                     {LinksDesktop}
                 </ul>
                 <div className="hidden lg:flex items-center gap-3">
-                    <NavLink to="/login" className="btn btn-outline btn-sm rounded-full px-5">
-                        Sign In
-                    </NavLink>
+                    {
+                        user ? <button onClick={handleSingOut} className="btn btn-outline btn-sm rounded-full px-5">
+                            Sign Out
+                        </button> : <NavLink to="/login" className="btn btn-outline btn-sm rounded-full px-5">
+                            Sign In
+                        </NavLink>
+                    }
+
                     <NavLink
-                        to="/register"
-                        className="btn btn-sm bg-(--color-primary) hover:bg-lime-500 border-none text-black rounded-full px-5"
-                    >
-                        Sign Up
-                    </NavLink>
+                            to="/beARider"
+                            className="btn btn-sm bg-(--color-primary) hover:bg-lime-500 border-none text-black rounded-full px-5"
+                        >
+                            Be A Rider
+                        </NavLink> 
                     <button
                         aria-label="Get started"
                         className="btn btn-circle btn-sm bg-black hover:bg-gray-800 border-none text-white -ml-2.5"
@@ -150,15 +162,19 @@ const Navbar = () => {
                         {LinksMobile}
                     </ul>
                     <div className="flex items-center gap-3 pt-4">
-                        <NavLink to="/signin" className="btn btn-outline btn-sm rounded-full flex-1">
-                            Sign In
-                        </NavLink>
+                        {
+                            user ? <button onClick={handleSingOut} className="btn btn-outline btn-sm rounded-full flex-1">
+                                Sign Out
+                            </button> : <NavLink to="/login" className="btn btn-outline btn-sm rounded-full flex-1">
+                                Sign In
+                            </NavLink>
+                        }
                         <NavLink
-                            to="/signup"
-                            className="btn btn-sm bg-lime-400 hover:bg-lime-500 border-none text-black rounded-full flex-1"
-                        >
-                            Sign Up
-                        </NavLink>
+                                to="/beARider"
+                                className="btn btn-sm bg-lime-400 hover:bg-lime-500 border-none text-black rounded-full flex-1"
+                            >
+                                Be A Rider
+                            </NavLink>
                     </div>
                 </div>
             )}
