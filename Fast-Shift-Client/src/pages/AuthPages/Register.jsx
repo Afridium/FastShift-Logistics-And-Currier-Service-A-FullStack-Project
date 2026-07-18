@@ -3,12 +3,14 @@ import { Link } from 'react-router';
 import { FaArrowLeft } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
 import { register } from 'swiper/element';
+import useAuth from '../../CustomHooks/useAuth';
 const Register = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
-
+    const {registerUsingEmailAndPassword} = useAuth();
     const handleRegistration = (data) => {
-        console.log("ok");
-        console.log(data);
+        registerUsingEmailAndPassword(data.email, data.password)
+        .then(result => console.log(result.user))
+        .catch(err => console.log(err));
     }
     return (
         <div className="hero min-h-screen lg:w-[80%] lg:mx-auto">

@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router';
 import { FaArrowLeft } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
+import useAuth from '../../CustomHooks/useAuth';
 const Login = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const {loginUsingEmailAndPassword} = useAuth();
     const handleLogin = (data) => {
         console.log(data);
+        loginUsingEmailAndPassword(data.email, data.password)
+        .then(result => console.log(result.user))
+        .catch(err => console.log(err));
     }
     return (
         <div className="hero min-h-screen lg:w-[80%] lg:mx-auto">
